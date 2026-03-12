@@ -27,7 +27,7 @@ const emails = [
 	['some.one-tag@gmx.com', 'some.one@gmx.com'],
 	['some.one+tag@icloud.com', 'some.one@icloud.com'],
 	['some.one+tag@mailfence.com', 'some.one@mailfence.com'],
-	['some.one+tag@protonmail.com', 'some.one@protonmail.com'],
+	['some.one+tag@protonmail.com', 'someone@protonmail.com'],
 	['some.one+tag@skiff.com', 'someone@skiff.com'],
 	['some.one+tag@outlook.com', 'some.one@outlook.com'],
 	['some.one-tag@yahoo.com', 'some.one@yahoo.com'],

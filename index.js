@@ -6,6 +6,7 @@ export const Fix = {
 	REMOVE_DOT: 'remove_subdomain_addressing',
 	REMOVE_PLUS: 'remove_sub_addressing_plus',
 	REMOVE_MINUS: 'remove_sub_addressing_minus',
+	REMOVE_UNDERSCORE: 'remove_sub_addressing_underscore',
 	CANONICALIZE_DOMAIN: 'canonicalize_domain',
 };
 
@@ -82,6 +83,9 @@ export const VendorFix = new Map([
 		Vendor.PROTON,
 		{
 			[Fix.REMOVE_PLUS]: true,
+			[Fix.REMOVE_MINUS]: true,
+			[Fix.REMOVE_DOT]: true,
+			[Fix.REMOVE_UNDERSCORE]: true,
 		},
 	],
 	[
@@ -257,9 +261,11 @@ export const DomainVendorMap = new Map([
 	['outlook.sk', Vendor.OUTLOOK],
 	['passport.com', Vendor.OUTLOOK],
 
-	// Proton
+	// Proton (https://proton.me/support/what-is-difference-between-proton-domains)
 	['proton.me', Vendor.PROTON],
 	['protonmail.com', Vendor.PROTON],
+	['pm.me', Vendor.PROTON], // Available for premium users
+	['protonmail.ch', Vendor.PROTON], // Legacy
 
 	// Skiff
 	['skiff.com', Vendor.SKIFF],
@@ -320,7 +326,11 @@ export function canonicalize(email) {
 	}
 
 	if (rules[Fix.REMOVE_DOT]) {
-		local = local.replaceAll(/\.+/g, dotsReplacer);
+		local = local.replaceAll('.', dotsReplacer);
+	}
+
+	if (rules[Fix.REMOVE_UNDERSCORE]) {
+		local = local.replaceAll('_', '');
 	}
 
 	if (rules[Fix.CANONICALIZE_DOMAIN]) {

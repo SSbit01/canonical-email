@@ -1,6 +1,6 @@
 {
 	"name": "canonical-email",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Email address normalization to remove subdomains, plus addressing, and comments.",
 	"homepage": "https://github.com/coryasilva/canonical-email#readme",
 	"bugs": {
