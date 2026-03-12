@@ -295,9 +295,6 @@ export const DomainVendorMap = new Map([
 	['zohomail.com', Vendor.ZOHO],
 ]);
 
-// Replace single dots, but not multiple consecutive dots
-const dotsReplacer = match => (match.length > 1 ? match : '');
-
 /**
  * Canonicalizes (normalizes) email addresses to remove subdomains, plus addressing, and comments.
  * @param {string} email
@@ -326,7 +323,7 @@ export function canonicalize(email) {
 	}
 
 	if (rules[Fix.REMOVE_DOT]) {
-		local = local.replaceAll('.', dotsReplacer);
+		local = local.replaceAll('.', '');
 	}
 
 	if (rules[Fix.REMOVE_UNDERSCORE]) {
